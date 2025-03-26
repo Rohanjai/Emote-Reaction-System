@@ -1,1 +1,142 @@
 @import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-gray-50;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 transition-colors duration-200;
+  }
+
+  .btn-danger {
+    @apply bg-red-500 hover:bg-red-600;
+  }
+
+  .input {
+    @apply px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent;
+  }
+}
+
+/* ...existing code... */
+
+@keyframes emoteFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(0) scale(1.2);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(0.8);
+  }
+}
+
+.emote-burst-container {
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  margin-bottom: 8px;
+}
+
+.emote-bubble {
+  position: absolute;
+  animation: emoteFloat 2s forwards;
+  font-size: 24px;
+  user-select: none;
+}
+/* Add these styles to your CSS file */
+.full-page-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 1000;
+  overflow: hidden;
+}
+
+.fullscreen-emote {
+  position: absolute;
+  animation: emoteFullscreenFloat 3s forwards ease-out;
+  font-size: 48px;
+  user-select: none;
+}
+
+@keyframes emoteFullscreenFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(50vh) scale(0.5);
+  }
+  15% {
+    opacity: 1;
+    transform: translateY(30vh) scale(1.2);
+  }
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) scale(0.8);
+  }
+}
+.emote-bubble-selector {
+  transition: all 0.2s ease;
+}
+
+.emote-bubble-selector:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.emote-bubble-selector:active {
+  transform: scale(0.95);
+}
+@keyframes float-up {
+  0% {
+    transform: translateY(100%) scale(0.5);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes burst {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    transform: scale(1.5) rotate(180deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.animate-float-up {
+  animation: float-up 3s ease-out forwards;
+}
+
+.animate-burst {
+  animation: burst 2s ease-out forwards;
+}
